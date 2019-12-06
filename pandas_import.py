@@ -66,6 +66,35 @@ joinFrame.fillna(0, inplace=True) #not sure if instructions mean '0', but 0 \
 #(without quotes) makes more sense
 #print(joinFrame)
 
+#5 - working with time stamps
+joinFrame.index = pd.to_datetime(joinFrame.index)
+#add a new column -> round to 5 min
+joinFrame.insert(len(joinFrame.columns), 'time5', joinFrame.index.round('5min'))
+#add a new column -> round to 15 min
+joinFrame.insert(len(joinFrame.columns), 'time15', joinFrame.index.round('15min'))
+#print(joinFrame)
+
+#6
+#lets group by our new times, and get the means
+time5 = joinFrame.set_index("time5")
+time5.drop(['Id_x', 'patient_x', 'id', 'Id_y', 'patient_y', 'time15'], axis=1, inplace=True)
+
+time15 = joinFrame.set_index("time15")
+time15.drop(['Id_x', 'patient_x', 'id', 'Id_y', 'patient_y', 'time5'], axis=1, inplace=True)
+
+time15.to_csv('time15', sep='\t')
+time5.to_csv('time5', sep='\t')
+
+
+
+#min15 = joinFrame.groupby(['time15', 'activity', 'bolus', 'meal']).mean()
+#min15.drop(['Id_x', 'patient_x', 'id', 'Id_y', 'patient_y'], axis=1, inplace=True)
+#print(min15.cgm.mean())
+#min15 = joinFrame.groupby('time15')[['activity', 'bolus', 'meal']].mean()
+#print(min15)
+
+
+
 
 
 #print(activity)

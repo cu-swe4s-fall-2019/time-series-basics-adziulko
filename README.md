@@ -1,6 +1,10 @@
-# time-series-basics
-Objectives : Import multiple csv data files from a folder, clean data and match on time stamps,
+# time-series-basics & Pandas
+time-series-basics Objectives : Import multiple csv data files from a folder, clean data and match on time stamps,
 work with datetime data type
+
+Pandas Objectives : Work with Pandas DataFrames and Series objects. Import multiple files, match on
+indexes, clean and print. (You are re-doing assignment 5, but with pandas dataframes instead
+of lists. You should find this much easier & speedier!)
 
 ## File instruction
 To test for python Pep8 style, you will need to:
